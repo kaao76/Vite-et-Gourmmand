@@ -14,10 +14,10 @@ $motDePasseHache = password_hash('Test1234!', PASSWORD_DEFAULT);
 
 // Créer un utilisateur fictif pour le test
 $utilisateur = new Utilisateur(  // Notre objet $utilisateur contient les informations de Sarah.
-    'Martin',              // Nom
-    'Sarah',               // Prénom
+    'Benkassou',              // Nom
+    'Kaouthar',               // Prénom
     '0612345678',          // Téléphone
-    'sarah.test@example.com', // Email
+    'kaouthar@example.com', // Email
     '12 rue des Fleurs',   // Adresse
     'Beauvais',            // Ville
     'France',              // Pays
