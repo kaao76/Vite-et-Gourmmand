@@ -70,7 +70,9 @@ class UtilisateurRepository
     public function findAll(): array
     {
         $requete = $this->pdo->prepare(
-            "SELECT * FROM Utilisateur"
+            "SELECT Utilisateur.*, Role.libelle AS nom_role
+FROM Utilisateur
+INNER JOIN Role ON Utilisateur.role_id = Role.id_role"
         );
 
         $requete->execute(); // les paramètres sont vides car nous ne transmettons rien 
@@ -121,7 +123,7 @@ class UtilisateurRepository
     }
 
 
-        // Suprimer définitivement un utilisateur
+    // Suprimer définitivement un utilisateur
 
     public function delete(int $id): bool
     {
@@ -129,8 +131,8 @@ class UtilisateurRepository
             "DELETE FROM Utilisateur
      WHERE id_utilisateur = :id"
         );
-         return $requete->execute([ /* « Je donne au paramètre :id la valeur de $id, j'exécute ma requête SQL et je retourne le résultat. » */
-        'id' => $id
-    ]);
+        return $requete->execute([ /* « Je donne au paramètre :id la valeur de $id, j'exécute ma requête SQL et je retourne le résultat. » */
+            'id' => $id
+        ]);
     }
 }
