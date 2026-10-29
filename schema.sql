@@ -163,3 +163,10 @@ CREATE TABLE MembreEquipe (
 
     FOREIGN KEY (id_image) REFERENCES Image(id_image)
 );
+
+
+ALTER TABLE Utilisateur
+MODIFY telephone VARCHAR(20) NOT NULL,
+MODIFY adresse VARCHAR(255) NOT NULL,
+MODIFY ville VARCHAR(100) NOT NULL,
+MODIFY pays VARCHAR(100) NOT NULL;
