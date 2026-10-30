@@ -33,8 +33,26 @@ $repository = new UtilisateurRepository($this->pdo); // $PDO Transmet la connexi
 $utilisateurs = $repository->findAll();
 require __DIR__ . '/../View/Html/utilisateurs.php'; // require seul pour afficher la vue chaque fois que l acrion index () est executée0
 
-
 }
+
+
+public function afficherFormulaireAjout(): void
+{
+    // Démarrer la session si elle n'est pas déjà active
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Vérifier que l'utilisateur est administrateur
+    if (!isset($_SESSION['role_id']) || (int) $_SESSION['role_id'] !== 3) {
+        http_response_code(403);
+        exit('Accès interdit');
+    }
+
+    // Afficher le formulaire d'ajout
+    require __DIR__ . '/../View/Html/ajouter_utilisateur.php';
+}
+
 
 
 }
