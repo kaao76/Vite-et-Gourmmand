@@ -22,9 +22,12 @@ if (!isset($utilisateurs)) {
     <main class="page-utilisateurs">
 
         <h1>Gestion des utilisateurs</h1>
+        <?php if ($messageSucces ?? false): ?> <!-- avant cetait ($messageSucces): ?> mais vs code a detcet errer -->
+    <p>Utilisateur créé avec succès !</p>
+<?php endif; ?>
 
         <p>Liste des utilisateurs de Vite & Gourmand</p>
-        <a href="ajout_utilisateur.php">Ajouter un utilisateur
+        <a href="ajout_utilisateur.php">+Ajouter un utilisateur
         </a>
 
         <table>
