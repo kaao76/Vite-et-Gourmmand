@@ -53,6 +53,22 @@ public function afficherFormulaireAjout(): void
     require __DIR__ . '/../View/Html/ajouter_utilisateur.php';
 }
 
+public function traiterAjoutUtilisateur(): void
+{
+    // Démarrer la session si nécessaire
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Vérifier que l'utilisateur est administrateur
+    if (!isset($_SESSION['role_id']) || (int) $_SESSION['role_id'] !== 3) {
+        http_response_code(403);
+        exit('Accès interdit');
+    }
+
+    // Le traitement des données sera ajouté ensuite.
+}
+
 
 
 }
