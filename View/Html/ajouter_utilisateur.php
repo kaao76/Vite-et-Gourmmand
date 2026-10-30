@@ -13,35 +13,41 @@
         <h1>Ajouter un utilisateur</h1>
 
         <p>Créer un nouveau compte utilisateur.</p>
+                <!-- Afficher le message d'erreur envoyé par le contrôleur -->
+
+        <?php if (isset($erreur)): ?>
+    <p><?= htmlspecialchars($erreur) ?></p>
+<?php endif; ?>
+
 <form action="ajout_utilisateur.php" method="POST">
         
     <!-- Nom -->
     <label for="nom">Nom</label>
-    <input type="text" id="nom" name="nom" required>
+    <input type="text" id="nom" name="nom"    value="<?= htmlspecialchars($_POST['nom'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
 
     <!-- Prénom -->
     <label for="prenom">Prénom</label>
-    <input type="text" id="prenom" name="prenom" required>
+    <input type="text" id="prenom" name="prenom"    value="<?= htmlspecialchars($_POST['prenom'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
 
     <!-- Téléphone -->
     <label for="telephone">Téléphone</label>
-    <input type="tel" id="telephone" name="telephone" required>
+    <input type="tel" id="telephone" name="telephone"   value="<?= htmlspecialchars($_POST['telephone'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
 
     <!-- Email -->
     <label for="email">Adresse email</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" value="<?= htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
 
     <!-- Adresse -->
     <label for="adresse">Adresse</label>
-    <input type="text" id="adresse" name="adresse" required>
+    <input type="text" id="adresse" name="adresse" value="<?= htmlspecialchars($_POST['adresse'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
 
     <!-- Ville -->
     <label for="ville">Ville</label>
-    <input type="text" id="ville" name="ville" required>
+    <input type="text" id="ville" name="ville"  value="<?= htmlspecialchars($_POST['ville'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
 
     <!-- Pays -->
     <label for="pays">Pays</label>
-    <input type="text" id="pays" name="pays" required>
+    <input type="text" id="pays" name="pays"value="<?= htmlspecialchars($_POST['pays'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
 
     <!-- Mot de passe -->
     <label for="mot_de_passe">Mot de passe</label>
