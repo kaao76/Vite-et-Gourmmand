@@ -140,4 +140,43 @@ class UtilisateurController
             echo "Erreur lors de la création de l'utilisateur.";
         }
     }
+
+    
+public function afficherFormulaireModification(): void
+{
+    // Démarrer la session si nécessaire
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Vérifier que l'utilisateur connecté est administrateur
+    if (!isset($_SESSION['role_id']) || (int) $_SESSION['role_id'] !== 3) {
+        http_response_code(403);
+        exit('Accès interdit');
+    }
+
+    // Récupérer et vérifier l'identifiant transmis dans l'URL
+    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT); // verifie sue la valeur recu est un nombre entier
+
+    if ($id === false || $id === null || $id <= 0) {
+        http_response_code(400);
+        exit('Identifiant invalide.');
+    }
+
+    // Créer le repository
+    $repository = new UtilisateurRepository($this->pdo);
+
+    // Rechercher l'utilisateur dans MySQL
+    $utilisateur = $repository->findById($id);
+
+    // Vérifier que l'utilisateur existe
+    if ($utilisateur === false) {
+        http_response_code(404);
+        exit('Utilisateur introuvable.');
+    }
+
+    // Afficher le formulaire de modification
+    require __DIR__ . '/../View/Html/modifier_utilisateur.php';
+}
+
 }
