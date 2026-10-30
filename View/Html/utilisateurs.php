@@ -24,8 +24,7 @@ if (!isset($utilisateurs)) {
         <h1>Gestion des utilisateurs</h1>
 
         <p>Liste des utilisateurs de Vite & Gourmand</p>
-        <a href="ajouter_utilisateur.php">
-            Ajouter un utilisateur
+        <a href="ajout_utilisateur.php">Ajouter un utilisateur</a> Ajouter un utilisateur
         </a>
 
         <table>
