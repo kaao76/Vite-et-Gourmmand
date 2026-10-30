@@ -121,6 +121,7 @@ class UtilisateurController
         }
 
         $motDePasseHash = password_hash($motDePasse, PASSWORD_DEFAULT);
+        
         $utilisateur = new Utilisateur(
             $nom,
             $prenom,
@@ -132,6 +133,7 @@ class UtilisateurController
             $motDePasseHash,
             (int) $roleId
         );
+
         $enregistrementReussi = $repository->create($utilisateur);
         if ($enregistrementReussi) {
             header('Location: gestion_utilisateurs.php?creation=succes');
@@ -167,16 +169,27 @@ public function afficherFormulaireModification(): void
     $repository = new UtilisateurRepository($this->pdo);
 
     // Rechercher l'utilisateur dans MySQL
-    $utilisateur = $repository->findById($id);
+    $utilisateur_UPD = $repository->findById($id);
 
     // Vérifier que l'utilisateur existe
-    if ($utilisateur === false) {
+    if ($utilisateur_UPD === false) {
         http_response_code(404);
         exit('Utilisateur introuvable.');
     }
 
     // Afficher le formulaire de modification
-    require __DIR__ . '/../View/Html/modifier_utilisateur.php';
+    require __DIR__ . '/../View/Html/Form_modif_utilisateur.php';
 }
+
+
+public function traiterModificationUtilisateur(): void
+{
+
+}
+
+
+
+
+
 
 }
