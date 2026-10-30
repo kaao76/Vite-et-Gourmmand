@@ -13,12 +13,8 @@
         <h1>Ajouter un utilisateur</h1>
 
         <p>Créer un nouveau compte utilisateur.</p>
-
-        <form action="../../public/traitement_ajout_utilisateur.php" method="POST">
-
+<form action="ajout_utilisateur.php" method="POST">
         
-<form action="../../public/traitement_ajout_utilisateur.php" method="POST">
-
     <!-- Nom -->
     <label for="nom">Nom</label>
     <input type="text" id="nom" name="nom" required>
@@ -65,8 +61,6 @@
 
 </form>
 
-
-        </form>
     </main>
 
 </body>
