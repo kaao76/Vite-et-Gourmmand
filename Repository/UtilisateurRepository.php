@@ -92,7 +92,8 @@ INNER JOIN Role ON Utilisateur.role_id = Role.id_role"
              email = :email,
              adresse = :adresse,
              ville = :ville,
-             pays = :pays
+             pays = :pays,
+             role_id = :role_id
          WHERE id_utilisateur = :id"
         );
 
@@ -104,6 +105,7 @@ INNER JOIN Role ON Utilisateur.role_id = Role.id_role"
             'adresse' => $utilisateur->getAdresse(),
             'ville' => $utilisateur->getVille(),
             'pays' => $utilisateur->getPays(),
+            'role_id' => $utilisateur->getRoleId(),
             'id' => $id
         ]);
     }
