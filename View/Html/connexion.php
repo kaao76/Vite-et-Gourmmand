@@ -1,3 +1,11 @@
+<?php
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,7 +20,17 @@
     <main>
         <h1>Connexion</h1>
         <p>Connectez-vous à votre compte Vite & Gourmand.</p>
-        <form method="POST">
+        <?php if (isset($_SESSION['erreur_connexion'])): ?>
+
+            <p>
+                <?= htmlspecialchars($_SESSION['erreur_connexion']) ?>
+            </p>
+
+        <?php endif; ?>
+        <?php unset($_SESSION['erreur_connexion']); ?>  <!----supprimer le message d erreur---->
+
+
+        <form action="../../public/traitement_connexion.php" method="POST">
             <label for="email">Adresse email</label>
             <input type="email" id="email" name="email" required>
 
