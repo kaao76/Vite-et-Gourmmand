@@ -11,6 +11,7 @@ class ConnexionController
     {
         $this->pdo = $pdo;
     }
+    
     public function connecter(): void // void : indique que cette méthode ne renverra aucune valeur avec return
     {
 
